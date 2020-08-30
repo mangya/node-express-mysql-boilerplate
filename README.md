@@ -8,39 +8,30 @@ A boilerplate for **Node.js** web applications. This boilerplate gives the basic
 2. ```NPM```
 3. ```MySQL```
 
-### Features
-
 ### Quick start
 
-_Notice that the boilerplate comes with a small application for user management already, you can delete it with a npm script after you understand how the boilerplate works but please do the quick start first!_ 😊
+1. Clone the repository with `git clone https://github.com/mangya/node-express-mysql-boilerplate.git <your_project_folder_name>`
+2. Change directory to your project folder `cd <your_project_folder_name>`
+3. Install the dependencies with `npm install`
+4. Create database in MySQL.
+5. Update the your database name and credentials in the `.env` file.
+6. Run the application with `npm start` (MySQL service should be up and running).
+7. Access `http://localhost:3000` and you're ready to go!
 
-1. Clone the repository with `git clone https://github.com/talyssonoc/node-api-boilerplate`
-2. Setup the database on `config/database.js` (there's an example file there to be used with MySQL 😉 )
-3. Install the dependencies with `npm`
-4. Create the development and test databases you have setup on `config/database.js`
-5. Run the database migrations with `npm run sequelize db:migrate`
-6. Add some seed data to the development database with `npm run sequelize db:seed:all`
-7. Run the application in development mode with `npm run dev`
-8. Access `http://localhost:3000/api/users` and you're ready to go!
-
-## Tech
-
-- [Node v7.6+](http://nodejs.org/)
-- [Express](https://npmjs.com/package/express)
-- [Sequelize](https://www.npmjs.com/package/sequelize)
-- [Awilix](https://www.npmjs.com/package/awilix)
-- [Structure](https://www.npmjs.com/package/structure)
-- [HTTP Status](https://www.npmjs.com/package/http-status)
-- [Log4js](https://www.npmjs.com/package/log4js)
-- [Morgan](https://www.npmjs.com/package/morgan)
-- [Express Status Monitor](https://www.npmjs.com/package/express-status-monitor)
-- [Nodemon](https://www.npmjs.com/package/nodemon)
-- [PM2](https://www.npmjs.com/package/pm2)
-- [Mocha](https://www.npmjs.com/package/mocha)
-- [Chai](https://www.npmjs.com/package/chai)
-- [FactoryGirl](https://www.npmjs.com/package/factory-girl)
-- [Istanbul](https://www.npmjs.com/package/istanbul) + [NYC](https://www.npmjs.com/package/nyc)
-- [ESLint](https://www.npmjs.com/package/eslint)
+## Packages used
+* [nodemon](https://github.com/remy/nodemon) — tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
+* [bcryptjs](https://github.com/dcodeIO/bcrypt.js) — encryption library to hash a password
+* [body-parser](https://github.com/expressjs/body-parser) — Node.js body parsing middleware. Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
+* [connect-flash](https://github.com/jaredhanson/connect-flash) — middleware to store flash messages in the session.
+* [connect-session-sequelize](https://github.com/mweibel/connect-session-sequelize) — SQL session store using Sequelize.js
+* [csurf](https://github.com/expressjs/csurf) — Middleware for CSRF token creation and validation. Requires session middleware to be initialized first. We have used `express-session`
+* [dotenv](https://github.com/motdotla/dotenv) — module to load environment variables from a .env file
+* [express](https://github.com/visionmedia/express) — web application framework for node
+* [express-handlebars](https://github.com/express-handlebars/express-handlebars) — Template engine
+* [express-session](https://github.com/expressjs/session) — Module to create a session middleware. Required for `csurf`.
+* [express-validator](https://github.com/express-validator/express-validator) — An express.js middleware for validator (a library of string validators and sanitizers).
+* [mysql2](https://github.com/sidorares/node-mysql2) — MySQL client for Node.js. Required for Sequelize. 
+* [sequelize](https://github.com/sequelize/sequelize) — Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.
 
 ## Contributing
 
