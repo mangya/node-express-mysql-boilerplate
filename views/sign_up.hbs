@@ -1,0 +1,53 @@
+<div class="container">
+	<div class="py-5 text-center">
+		<img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+		<p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+	</div>
+	<div class="row">
+		<div class="col-md-12 order-md-1">
+			<form class="needs-validation" novalidate id="signUpForm" action="/sign-up" method="POST">
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="firstName">First name</label>
+						<input type="text" class="form-control" name="firstName" id="firstName" placeholder="" name="_csrf" value="" autofocus>
+						<input type="hidden" value="{{csrfToken}}" name="_csrf" >
+						<div class="invalid-feedback">Valid first name is required.</div>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="lastName">Last name</label>
+						<input type="text" class="form-control" name="lastName" id="lastName" placeholder="" value="">
+						<div class="invalid-feedback">Valid last name is required.</div>
+					</div>
+				</div>
+
+				<div class="mb-3">
+					<label for="email">Email</label>
+					<input type="email" class="form-control" name="email" id="email" placeholder="you@example.com">
+					<div class="invalid-feedback">Please enter a valid email address for shipping updates.</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="address">Password</label>
+						<input type="text" class="form-control" name="password" id="password" placeholder="">
+						<div class="invalid-feedback">Please enter your shipping address.</div>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="address2">Confirm Password</label>
+						<input type="text" class="form-control" name="confirm_password" id="confirm_password" placeholder="">
+					</div>
+				</div>
+				{{#if errorMessage}}
+				<div class="alert alert-danger" role="alert">
+					{{errorMessage}}
+				</div>
+				{{/if}}
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" id="same-address">
+					<label class="custom-control-label" for="same-address">I acknowledge that I have read and agree to our terms of use and privacy policy</label>
+				</div>
+				<hr class="mb-4">
+				<button class="btn btn-primary btn-lg btn-block" id="btnSubmit" type="button">Sign Up</button>
+			</form>
+		</div>
+	</div>
+</div>

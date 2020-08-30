@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ pageTitle }}</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+	<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+		<a href="/" style="text-decoration: none; color: inherit; margin-right: auto!important;"><h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5></a>
+		<nav class="my-2 my-md-0 mr-md-3">
+			<a class="p-2 text-dark" href="#">Features</a>
+			<a class="p-2 text-dark" href="#">Enterprise</a>
+			<a class="p-2 text-dark" href="#">Support</a>
+			<a class="p-2 text-dark" href="#">Pricing</a>
+		</nav>
+		{{#if isAuthenticated}}
+		<form action="/logout" method="POST">
+			<input type="hidden" name="_csrf" value="{{csrfToken}}" >
+			<button class="btn btn-outline-primary">Logout</button> 
+		</form>
+		{{else}}
+		<a class="btn btn-outline-primary" href="/login">Login</a>
+		{{/if}}
+	</div>
+
+    {{{ body }}}
+    <script type="text/javascript" src="/js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+</body>
+</html>

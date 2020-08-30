@@ -1,0 +1,30 @@
+{
+  "name": "node-blog",
+  "version": "1.0.0",
+  "description": "A blog in Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js",
+    "postinstall": "cp .env-example .env"
+  },
+  "author": "Mangesh Ghadigaonkar",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "connect-session-sequelize": "^7.0.1",
+    "csurf": "^1.11.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.6.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.3.4"
+  }
+}
