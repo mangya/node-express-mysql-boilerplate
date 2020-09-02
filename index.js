@@ -37,13 +37,6 @@ app.use(csrfProtection);
 app.use(flash());
 
 app.use((req, res, next) => {
-	let message = req.flash('error');
-	if (message.length > 0) {
-		message = message[0];
-	} else {
-		message = null;
-	}
-	res.locals.errorMessage = message;
 	res.locals.isAuthenticated = req.session.isLoggedIn;
 	res.locals.csrfToken = req.csrfToken();
 	next();

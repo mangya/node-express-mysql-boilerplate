@@ -35,4 +35,4 @@ A boilerplate for **Node.js** web applications. This boilerplate gives the basic
 
 ## Contributing
 
-This boilerplate is open to suggestions and contributions, documentation contributions are also welcome! :)
+This boilerplate is open to suggestions and contributions, documentation contributions are also welcome! 😊

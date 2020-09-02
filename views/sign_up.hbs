@@ -1,53 +1,72 @@
-<div class="container">
-	<div class="py-5 text-center">
-		<img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-		<p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
-	</div>
-	<div class="row">
-		<div class="col-md-12 order-md-1">
-			<form class="needs-validation" novalidate id="signUpForm" action="/sign-up" method="POST">
-				<div class="row">
-					<div class="col-md-6 mb-3">
-						<label for="firstName">First name</label>
-						<input type="text" class="form-control" name="firstName" id="firstName" placeholder="" name="_csrf" value="" autofocus>
-						<input type="hidden" value="{{csrfToken}}" name="_csrf" >
-						<div class="invalid-feedback">Valid first name is required.</div>
+<div class="row justify-content-md-center h-100">
+	<div class="card-wrapper">
+		<div class="brand">
+			<a href="/"><img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="logo"></a>
+		</div>
+		<div class="card fat">
+			<div class="card-body">
+				<h4 class="card-title">Register</h4>
+				<form id="signUpForm" action="/sign-up" method="POST" class="my-login-validation" novalidate="">
+					<div class="form-group">
+						<label for="name">Name</label>
+						<input id="name" type="text" class="form-control" name="name" value="{{oldInput.name}}" required autofocus>
+						<div class="invalid-feedback">
+							What's your name?
+						</div>
 					</div>
-					<div class="col-md-6 mb-3">
-						<label for="lastName">Last name</label>
-						<input type="text" class="form-control" name="lastName" id="lastName" placeholder="" value="">
-						<div class="invalid-feedback">Valid last name is required.</div>
-					</div>
-				</div>
 
-				<div class="mb-3">
-					<label for="email">Email</label>
-					<input type="email" class="form-control" name="email" id="email" placeholder="you@example.com">
-					<div class="invalid-feedback">Please enter a valid email address for shipping updates.</div>
-				</div>
-				<div class="row">
-					<div class="col-md-6 mb-3">
-						<label for="address">Password</label>
-						<input type="text" class="form-control" name="password" id="password" placeholder="">
-						<div class="invalid-feedback">Please enter your shipping address.</div>
+					<div class="form-group">
+						<label for="email">E-Mail Address</label>
+						<input id="email" type="email" class="form-control" name="email" value="{{oldInput.email}}" required>
+						<input type="hidden" value="{{csrfToken}}" name="_csrf" >
+						<div class="invalid-feedback">
+							Your email is invalid
+						</div>
 					</div>
-					<div class="col-md-6 mb-3">
-						<label for="address2">Confirm Password</label>
-						<input type="text" class="form-control" name="confirm_password" id="confirm_password" placeholder="">
+
+					<div class="form-group">
+						<label for="password">Password</label>
+						<input id="password" type="password" class="form-control" name="password" required data-eye>
+						<div class="invalid-feedback">
+							Password is required
+						</div>
 					</div>
-				</div>
-				{{#if errorMessage}}
-				<div class="alert alert-danger" role="alert">
-					{{errorMessage}}
-				</div>
-				{{/if}}
-				<div class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" id="same-address">
-					<label class="custom-control-label" for="same-address">I acknowledge that I have read and agree to our terms of use and privacy policy</label>
-				</div>
-				<hr class="mb-4">
-				<button class="btn btn-primary btn-lg btn-block" id="btnSubmit" type="button">Sign Up</button>
-			</form>
+
+					<div class="form-group">
+						<label for="password">Confirm Password</label>
+						<input id="confirm_password" type="password" class="form-control" name="confirm_password" required>
+						<div class="invalid-feedback">
+							Password is required
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="custom-checkbox custom-control">
+							<input type="checkbox" name="agree" id="agree" class="custom-control-input" required="">
+							<label for="agree" class="custom-control-label">I agree to the <a href="#">Terms and Conditions</a></label>
+							<div class="invalid-feedback" id="errorAgree">
+								You must agree with our Terms and Conditions
+							</div>
+						</div>
+					</div>
+					{{#if errorMessage}}
+					<div class="alert alert-danger" role="alert">
+						{{errorMessage}}
+					</div>
+					{{/if}}
+					<div class="form-group m-0">
+						<button type="button" id="btnSubmit" class="btn btn-primary btn-block">
+							Register
+						</button>
+					</div>
+					<div class="mt-4 text-center">
+						Already have an account? <a href="/login">Login</a>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="footer">
+			Copyright &copy; 2021 &mdash; Your Company 
 		</div>
 	</div>
 </div>
