@@ -18,11 +18,31 @@ A boilerplate for **Node.js** web applications. This boilerplate gives the basic
 6. Run the application with `npm start` (MySQL service should be up and running).
 7. Access `http://localhost:3000` and you're ready to go!
 
+### Folder Structure
+```
+.
+├── app/
+│   ├── controllers/           # Controllers
+│   ├── middlewares/           # Middlewares
+│   ├── models/                # Express database models
+├── config/
+├── public/                    
+│   ├── css/                   # Stylesheets
+│   ├── js/                     
+│	├── fonts/                 
+│   ├── images/
+├── .env                       # API keys, passwords, and other sensitive information
+├── routes/                    # Route definitions
+├── views/					   # All view files
+├── index.js                   # Express application
+└── package.json               # NPM Dependencies and scripts
+```
+
 ## Packages used
 * [nodemon](https://github.com/remy/nodemon) — tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
 * [bcryptjs](https://github.com/dcodeIO/bcrypt.js) — encryption library to hash a password
 * [body-parser](https://github.com/expressjs/body-parser) — Node.js body parsing middleware. Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
-* [connect-flash](https://github.com/jaredhanson/connect-flash) — middleware to store flash messages in the session.
+* [express-flash](https://github.com/RGBboy/express-flash) — middleware to store flash messages in the session.
 * [connect-session-sequelize](https://github.com/mweibel/connect-session-sequelize) — SQL session store using Sequelize.js
 * [csurf](https://github.com/expressjs/csurf) — Middleware for CSRF token creation and validation. Requires session middleware to be initialized first. We have used `express-session`
 * [dotenv](https://github.com/motdotla/dotenv) — module to load environment variables from a .env file

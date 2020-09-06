@@ -3,7 +3,7 @@ const path = require('path');
 const env = require('dotenv');
 const csrf = require('csurf');
 const express = require('express');
-const flash = require('connect-flash');
+const flash = require('express-flash');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const expressHbs = require('express-handlebars');
@@ -24,9 +24,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // required for csurf
 app.use(session({
-    secret: 'mysecret',
     resave: true,
     saveUninitialized: true,
+    secret: process.env.SESSION_SECRET,
+  	cookie: { maxAge: 1209600000 }, // two weeks in milliseconds
     store: new SequelizeStore({
     	db: sequelize,
     	table: "sessions",
@@ -57,6 +58,7 @@ app.use(webRoutes);
 app.use(errorController.pageNotFound);
 
 sequelize
+	//.sync({force : true})
 	.sync()
 	.then(() => {
 		app.listen(process.env.PORT);

@@ -1,4 +1,6 @@
+const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
+const validator = require('validator');
 const User = require('../models/User');
 const Session = require('../models/Session');
 
@@ -33,6 +35,13 @@ exports.loginPage = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
+	const validationErrors = [];
+	if (!validator.isEmail(req.body.inputEmail)) validationErrors.push('Please enter a valid email address.');
+	if (validator.isEmpty(req.body.inputPassword)) validationErrors.push('Password cannot be blank.');
+	if (validationErrors.length) {
+		req.flash('error', validationErrors);
+		return res.redirect('/login');
+	}
 	User.findOne({
 		where: {
 			email: req.body.inputEmail
@@ -56,7 +65,7 @@ exports.login = (req, res, next) => {
 				})
 				.catch(err => {
 					console.log(err);
-					req.flash('error', 'Sorry! Somethig went wrong.'+err);
+					req.flash('error', 'Sorry! Somethig went wrong.');
 					req.flash('oldInput',{email: req.body.inputEmail});
 					return res.redirect('/login');
 				});
@@ -101,7 +110,7 @@ exports.signUp = (req, res, next) => {
 						return user.save();
 					})
 					.then(result => {
-						res.redirect('/login');
+						return res.redirect('/login');
 					});
 		} else {
 			req.flash('error', 'E-Mail exists already, please pick a different one.');
@@ -114,8 +123,40 @@ exports.signUp = (req, res, next) => {
 
 exports.forgotPasswordPage = (req, res, next) => {
 	if(res.locals.isAuthenticated){
-		res.redirect('/');
+		return res.redirect('/');
 	} else {
-		res.render('forgot_password',{layout: 'login_layout', loginPage: true, pageTitle: 'Forgot Password', errorMessage: message(req), oldInput: oldInput(req)});
+		return res.render('forgot_password',{layout: 'login_layout', loginPage: true, pageTitle: 'Forgot Password', errorMessage: message(req), oldInput: oldInput(req)});
 	}
+};
+
+exports.forgotPassword = (req, res, next) => {
+	const validationErrors = [];
+	if (!validator.isEmail(req.body.email)) validationErrors.push('Please enter a valid email address.');
+
+	if (validationErrors.length) {
+		req.flash('error', validationErrors);
+		return res.redirect('/forgot-password');
+	}
+	crypto.randomBytes(32, (err, buffer) => {
+		if (err) {
+			console.log(err);
+			return res.redirect('/forgot-password');
+		}
+		const token = buffer.toString('hex');
+		User.findOne({where: {
+				email: req.body.email
+				}
+			})
+			.then(user => {
+				if(!user){
+					req.flash('error', 'No user found with that email');
+					return res.redirect('/forgot-password');
+				}
+				user.resetToken = token;
+				user.resetTokenExpiry = Date.now() + 3600000;
+				return user.save();
+			}).then(result => {
+				if(result) return res.redirect('/resetlink');
+			}).catch(err => {console.log(err)})
+	});
 };

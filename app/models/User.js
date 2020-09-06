@@ -1,31 +1,39 @@
 const bcrypt = require('bcryptjs');
-const Sequelize = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../../config/database');
 
 const User = sequelize.define('users', {
-	id: {
-		type: Sequelize.INTEGER,
-		autoIncrement: true,
-		allowNull: false,
-		primaryKey: true
-	},
-		fullName: Sequelize.STRING,
+		id: {
+			type: DataTypes.INTEGER,
+			autoIncrement: true,
+			allowNull: false,
+			primaryKey: true
+		},
+		fullName: DataTypes.STRING,
 		email: {
-			type: Sequelize.STRING,
+			type: DataTypes.STRING,
 			allowNull: false
 		},
 		password: {
-			type: Sequelize.STRING,
+			type: DataTypes.STRING,
 			allowNull: false
 		},
+		resetToken: {
+			type: DataTypes.STRING,
+			allowNull: true
+		},
+		resetTokenExpiry: {
+			type: DataTypes.DATE,
+			allowNull:true
+		}
   	},
 	{
-	indexes: [
-		// Create a unique index on email
-		{
-			unique: true,
-			fields: ['email']
-		}],
+		indexes: [
+			// Create a unique index on email
+			{
+				unique: true,
+				fields: ['email']
+			}],
 	});
 
 module.exports = User;
