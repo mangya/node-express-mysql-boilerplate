@@ -33,7 +33,7 @@ A boilerplate for **Node.js** web applications. This boilerplate gives the basic
 │   ├── images/
 ├── .env                       # API keys, passwords, and other sensitive information
 ├── routes/                    # Route definitions
-├── views/					   # All view files
+├── views/                     # All view files
 ├── index.js                   # Express application
 └── package.json               # NPM Dependencies and scripts
 ```
@@ -49,7 +49,7 @@ A boilerplate for **Node.js** web applications. This boilerplate gives the basic
 * [express](https://github.com/visionmedia/express) — web application framework for node
 * [express-handlebars](https://github.com/express-handlebars/express-handlebars) — Template engine
 * [express-session](https://github.com/expressjs/session) — Module to create a session middleware. Required for `csurf`.
-* [express-validator](https://github.com/express-validator/express-validator) — An express.js middleware for validator (a library of string validators and sanitizers).
+* [validator](https://github.com/validatorjs/validator.js) — A library of string validators and sanitizers.
 * [mysql2](https://github.com/sidorares/node-mysql2) — MySQL client for Node.js. Required for Sequelize. 
 * [sequelize](https://github.com/sequelize/sequelize) — Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.
 
