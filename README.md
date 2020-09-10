@@ -53,6 +53,9 @@ A boilerplate for **Node.js** web applications. This boilerplate gives the basic
 * [mysql2](https://github.com/sidorares/node-mysql2) — MySQL client for Node.js. Required for Sequelize. 
 * [sequelize](https://github.com/sequelize/sequelize) — Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.
 
+## Readings
+* [How to Architect a Node.Js Project](https://dev.to/shadid12/how-to-architect-a-node-js-project-from-ground-up-1n22)
+
 ## Contributing
 
 This boilerplate is open to suggestions and contributions, documentation contributions are also welcome! 😊
