@@ -45,7 +45,7 @@ app.use((req, res, next) => {
 
 app.engine(
 	'hbs',
-	expressHbs({
+	expressHbs.engine({
 		layoutsDir: 'views/layouts/',
 		defaultLayout: 'web_layout',
 		extname: 'hbs'
