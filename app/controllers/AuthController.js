@@ -26,7 +26,7 @@ const oldInput = (req) => {
 	return oldInput;
 }
 
-exports.loginPage = (req, res, next) => {
+exports.loginPage = (req, res) => {
 	if(res.locals.isAuthenticated){
 		res.redirect('/');
 	} else {
@@ -34,7 +34,7 @@ exports.loginPage = (req, res, next) => {
 	}
 };
 
-exports.login = (req, res, next) => {
+exports.login = (req, res) => {
 	const validationErrors = [];
 	if (!validator.isEmail(req.body.inputEmail)) validationErrors.push('Please enter a valid email address.');
 	if (validator.isEmpty(req.body.inputPassword)) validationErrors.push('Password cannot be blank.');
@@ -78,7 +78,7 @@ exports.login = (req, res, next) => {
 	.catch(err => console.log(err));
 };
 
-exports.logout = (req, res, next) => {
+exports.logout = (req, res) => {
 	if(res.locals.isAuthenticated){
 		req.session.destroy(err => {
 			return res.redirect('/');
@@ -88,11 +88,11 @@ exports.logout = (req, res, next) => {
 	}
 };
 
-exports.signUpPage = (req, res, next) => {
+exports.signUpPage = (req, res) => {
 	res.render('sign_up',{layout: 'login_layout', signUpPage: true, errorMessage: message(req), oldInput: oldInput(req)});
 };
 
-exports.signUp = (req, res, next) => {
+exports.signUp = (req, res) => {
 	User.findOne({
 		where: {
 			email: req.body.email
@@ -121,7 +121,7 @@ exports.signUp = (req, res, next) => {
 	.catch(err => console.log(err));
 };
 
-exports.forgotPasswordPage = (req, res, next) => {
+exports.forgotPasswordPage = (req, res) => {
 	if(res.locals.isAuthenticated){
 		return res.redirect('/');
 	} else {
@@ -129,7 +129,7 @@ exports.forgotPasswordPage = (req, res, next) => {
 	}
 };
 
-exports.forgotPassword = (req, res, next) => {
+exports.forgotPassword = (req, res) => {
 	const validationErrors = [];
 	if (!validator.isEmail(req.body.email)) validationErrors.push('Please enter a valid email address.');
 

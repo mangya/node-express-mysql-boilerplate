@@ -8,10 +8,16 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/login.css">
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/images/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/images/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/images/favicons/site.webmanifest">
+    <link rel="icon" href="/images/favicons/favicon.ico">
     <style type="text/css">
 		.has-error input, .has-error textarea{
 			border: red solid 1px;
-			margin-bottom: 0px
+			margin-bottom: 0px  
 		}
 		.has-error input:focus, .has-error textarea:focus{
 			border: red solid 1px;
@@ -21,12 +27,13 @@
 		}
     </style>
 </head>
-<body class="my-login-page">
-    <section class="h-100">
+<body class="my-login-page d-flex align-items-center py-4 bg-body-tertiary">
+    {{!-- <section class="h-100">
         <div class="container h-100">
-        {{{ body }}}
+        
         </div>
-    </section>
+    </section> --}}
+    {{{ body }}}
     <script type="text/javascript" src="/js/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/common.js"></script>
@@ -86,7 +93,7 @@
             inpCnfPwd.parent().append('<span class="help-txt">Password do not match</span>');
             is_valid = false;
         } else if(chkagree.length == 0) {
-            $('#agree').parent().parent().addClass('has-error');
+            $('#agree').parent().addClass('has-error');
             $('#agree').focus();
             $('#errorAgree').show();
             is_valid = false;

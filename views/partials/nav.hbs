@@ -1,0 +1,21 @@
+<div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+	<a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+		<img class="me-2" src="images/logo.svg" alt="" width="40" height="35" />
+		<span class="fs-4">Brand Name</span>
+	</a>
+
+	<nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+		<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Features</a>
+		<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Enterprise</a>
+		<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Support</a>
+		<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Pricing</a>
+	</nav>
+	{{#if isAuthenticated}}
+	<form action="/logout" method="POST">
+		<input type="hidden" name="_csrf" value="{{csrfToken}}" >
+		<button class="btn btn-outline-primary">Logout</button> 
+	</form>
+	{{else}}
+	<a class="btn btn-outline-primary" href="/login">Login</a>
+	{{/if}}
+</div>
